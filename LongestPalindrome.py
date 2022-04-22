@@ -1,0 +1,40 @@
+'''
+def palindromic(w):
+    return w == w[::-1]
+
+s = input()
+maxsub = ""
+
+for i in range(len(s)):
+    for j in range(i+1, len(s)):
+        sub = s[i:j+1]
+        if len(sub) > len(maxsub):
+            if palindromic(sub):
+                maxsub = sub
+
+print(maxsub)
+'''
+
+class Solution(object):
+   def longestPalindrome(self, s):
+      dp = [[False for i in range(len(s))] for i in range(len(s))]
+      for i in range(len(s)):
+         dp[i][i] = True
+      max_length = 1
+      start = 0
+      for l in range(2,len(s)+1):
+         for i in range(len(s)-l+1):
+            end = i+l
+            if l==2:
+               if s[i] == s[end-1]:
+                  dp[i][end-1]=True
+                  max_length = l
+                  start = i
+            else:
+               if s[i] == s[end-1] and dp[i+1][end-2]:
+                  dp[i][end-1]=True
+                  max_length = l
+                  start = i
+      return s[start:start+max_length]
+ob1 = Solution()
+print(ob1.longestPalindrome(input()))
