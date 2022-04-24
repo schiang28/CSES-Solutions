@@ -26,7 +26,6 @@ print(dice(n) % 1000000007)
 print(time() - start)
 """
 
-
 # solution2
 """
 from time import time
