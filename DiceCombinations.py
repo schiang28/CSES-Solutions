@@ -96,7 +96,7 @@ print(ans % 1000000007)
 print(time() - start)
 """
 
-# mr gwilt's solution
+# solution 5
 
 from time import time
 
